@@ -1,0 +1,131 @@
+ /* Import a handwritten-style font for the note content */
+        @import url('https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Roboto:wght@500&display=swap');
+
+        /* Style for the main container to look like a corkboard */
+        .notes-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px; /* Space between notes */
+            padding: 30px;
+            justify-content: center;
+            min-height: 100vh;
+            /* A subtle, repeating corkboard texture */
+            background-color: #d2b48c; /* Fallback color */
+            background-image: url("https://www.transparenttextures.com/patterns/cork-wallet.png");
+        }
+
+        /* Base style for each individual note card */
+        .note-card {
+            position: relative;
+            width: 280px;
+            height: 250px;
+            padding: 20px;
+            padding-top: 35px; /* Extra padding at the top for the pin */
+            background-color: #ffffe0; /* Light yellow sticky note color */
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.25);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            border-bottom-right-radius: 20px 5px; /* Adds a slight page-curl effect */
+        }
+
+        /* Add a hover effect to lift the note */
+        .note-card:hover {
+            transform: scale(1.05) rotate(0deg) !important; /* Straighten out on hover */
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+        }
+
+        /* This ::before pseudo-element creates the thumbtack/pin */
+        .note-card::before {
+            content: '';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 24px;
+            background: #e53e3e; /* A vibrant red for the pin head */
+            border-radius: 50%;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.4), 2px 2px 5px rgba(0,0,0,0.3);
+            border: 2px solid #c53030;
+        }
+
+        /* Alternate the rotation of the notes for a more natural look */
+        .note-card:nth-child(odd) {
+            transform: rotate(-4deg);
+            background-color: #e0ffff; /* Light cyan for variation */
+        }
+        .note-card:nth-child(odd)::before {
+            background: #3182ce; /* Blue pin for cyan notes */
+            border-color: #2b6cb0;
+        }
+
+
+        .note-card:nth-child(even) {
+            transform: rotate(3deg);
+            background-color: #f0e68c; /* Khaki for variation */
+        }
+        .note-card:nth-child(even):before {
+            background: #38a169; /* Green pin for khaki notes */
+            border-color: #2f855a;
+        }
+
+        .note-card:nth-child(3n) {
+            transform: rotate(2deg);
+            background-color: #fddde6; /* Light pink for variation */
+        }
+        .note-card:nth-child(3n)::before {
+            background: #d53f8c; /* Pink pin */
+            border-color: #b83280;
+        }
+
+
+        /* Styling for the note's title */
+        .note-title {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+            padding-bottom: 5px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        /* Styling for the note's main content with the handwritten font */
+        .note-content {
+            font-family: 'Kalam', cursive;
+            font-size: 1rem;
+            line-height: 1.5;
+            white-space: pre-wrap; /* Respects newlines in the content */
+        }
+
+        /* Styling for the "last modified" text */
+        .note-meta {
+            position: absolute;
+            bottom: 10px;
+            right: 15px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.75rem;
+            color: #888;
+        }
+        .add {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.add:hover {
+  background-color: #0056b3;
+  transform: scale(1.1);
+}
