@@ -18,7 +18,8 @@
         .note-card {
             position: relative;
             width: 280px;
-            height: 250px;
+            max-height: fit-content;
+            min-height: 250px;
             padding: 20px;
             padding-top: 35px; /* Extra padding at the top for the pin */
             background-color: #ffffe0; /* Light yellow sticky note color */
@@ -123,6 +124,7 @@
   cursor: pointer;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
+  
 }
 
 .add:hover {

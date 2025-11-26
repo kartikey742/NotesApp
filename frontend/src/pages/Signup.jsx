@@ -21,7 +21,7 @@ const SignupPage = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`${process.env.React_APP_API_URL}/auth/signup`, {
+      const response = await fetch("http://localhost:4000/api/auth/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -33,7 +33,7 @@ const SignupPage = () => {
       if (response.ok) {
         toast.success("Account created successfully!");
         setFormData({ firstName: "", lastName: "", email: "", password: "" });
-        // Navigate to login or dashboard
+        
       } else {
         
         
@@ -161,7 +161,7 @@ const SignupPage = () => {
 
           <p className="login-text">
             Already have an account?{" "}
-            <a href="#" className="login-link">
+            <a href="login" className="login-link">
               Log in
             </a>
           </p>

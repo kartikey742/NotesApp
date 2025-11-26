@@ -21,7 +21,7 @@ const LoginPage = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`${process.env.React_APP_API_URL}auth/login`, {
+      const response = await fetch("http://localhost:4000/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -29,6 +29,7 @@ const LoginPage = () => {
 
       const result = await response.json();
       console.log(result);
+      localStorage.setItem('token', result.token);
       localStorage.setItem('user', JSON.stringify(result.user));
       if (response.ok) {
         toast.success("Login successful!");
@@ -134,7 +135,7 @@ const LoginPage = () => {
 
           <p className="signup-text">
             Don't have an account?{" "}
-            <a href="signin" className="signup-link">
+            <a href="signup" className="signup-link">
               Sign up now
             </a>
           </p>
