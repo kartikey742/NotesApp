@@ -26,7 +26,7 @@ export const Modal = ({ open, setOpen,setNotesData,notesData, noteData, setEditM
     const token = localStorage.getItem('token');
     let res
     if(!editMode){
-   res=await fetch(`http://localhost:4000/api/notes/add-note/${userId}`,{
+   res=await fetch(`${process.env.REACT_APP_API_URL}/notes/add-note/${userId}`,{
     method:'POST',
     headers:{'Content-Type':'application/json',
   "Authorization": `Bearer ${token}`
@@ -35,7 +35,7 @@ export const Modal = ({ open, setOpen,setNotesData,notesData, noteData, setEditM
   });
 }
 else{
-   res=await fetch(`http://localhost:4000/api/notes/update-note/${noteData._id}`,{
+   res=await fetch(`${process.env.REACT_APP_API_URL}/notes/update-note/${noteData._id}`,{
     method:'PUT',
     headers:{'Content-Type':'application/json',
   "Authorization": `Bearer ${token}`

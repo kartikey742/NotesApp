@@ -21,7 +21,7 @@ const SignupPage = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:4000/api/auth/signup", {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/auth/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

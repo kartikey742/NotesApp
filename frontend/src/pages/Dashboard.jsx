@@ -16,11 +16,12 @@ export const Dashboard = () => {
   
 useEffect(()=>{
   const fetchNotes = async () => {
-  const res=await fetch(`http://localhost:4000/api/notes/get-notes/${userId}`,
-  {method:'GET',
-  headers:{'Content-Type':'application/json',
-  "Authorization": `Bearer ${token}`
-  }
+  const res = await fetch(`${process.env.REACT_APP_API_URL}/notes/get-notes/${userId}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    },
   });
   const data=await res.json();
   console.log(data);
@@ -30,7 +31,7 @@ fetchNotes();
 },[userId])
 const onDelete = async (noteId) => {
   try {
-    const res = await fetch(`http://localhost:4000/api/notes/delete-note/${noteId}`, {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/notes/delete-note/${noteId}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
